@@ -1,4 +1,4 @@
-# Khái niệm:
+![image](https://github.com/LeslieEngr/protocol/assets/128287548/6f027e30-da71-4e89-ac17-9f073fa25324)# Khái niệm:
 **1. Cáp Cản Trở (Shielded Cable):**
 Cáp cản trở là cáp có một lớp bao ngoài bằng chất liệu dẫn điện (điển hình là lá bạc) để bảo vệ dây dẫn bên trong khỏi nhiễu từ môi trường xung quanh.
 Bao vỏ bằng kim loại bao quanh dây dẫn được kết nối đến đất (ground) để đảm bảo chất liệu bao ngoài này có thể tiếp xúc với đất và loại bỏ nhiễu.
@@ -28,12 +28,32 @@ Cáp RS485 thường được thiết kế để hỗ trợ truyền tải dữ 
 
   2. Chọn Slave: Master sau đó chọn một Slave cụ thể mà nó muốn giao tiếp. Điều này thường được thực hiện bằng cách gửi địa chỉ của Slave trong trường địa chỉ của gói tin Modbus RTU. ví dụ gửi tới địa chỉ Slave là **[02]**
 
-  3. Gửi yêu cầu: Master gửi yêu cầu đến Slave, yêu cầu dữ liệu cụ thể hoặc thực hiện một chức năng như đọc hoặc ghi vào các thanh ghi của Slave. ví dụ đọc thanh ghi, nên function code là **[03]** ; địa chỉ là **[03E8]** ; số thanh ghi là **[0002]**. Vậy frame truyền là: [02 03 03E8 0002
+  3. Gửi yêu cầu: Master gửi yêu cầu đến Slave, yêu cầu dữ liệu cụ thể hoặc thực hiện một chức năng như đọc hoặc ghi vào các thanh ghi của Slave. ví dụ đọc thanh ghi, nên function code là **[03]** ; địa chỉ là **[03E8]** ; số thanh ghi là **[0002]**. Vậy frame truyền là: **[02 03 03E8 0002]** ( đây là dạng hex, thực tế gửi ở dạng binary-vì truyền 2 dây tín hiệu 0,1)
 
   4. Truyền dữ liệu: Sau khi gửi yêu cầu, Master tiếp tục gửi các tín hiệu dữ liệu và chờ Slave trả lời. 
 
   5. Nhận phản hồi từ Slave: Slave xử lý yêu cầu từ Master và gửi phản hồi lại Master. Phản hồi này có thể chứa dữ liệu yêu cầu hoặc thông báo lỗi nếu có.
 
   6. Kết thúc truyền thông: Sau khi nhận được phản hồi từ Slave, Master có thể tiếp tục gửi các yêu cầu khác hoặc kết thúc truyền thông bằng cách gửi tín hiệu kết thúc (End-of-Frame).
+
+     Các function code:(trong phạm vi Belink, chỉ cần dùng 03 và 04)
+     
+     ![image](https://github.com/LeslieEngr/protocol/assets/128287548/fdc7d52e-ec3d-4751-98ca-8fd24475e83e)
+
+Một số ví dụ với các loại function code khác : 
+
+**04.1:**
+
+Địa chỉ Slave: 05 (địa chỉ của thiết bị Slave Modbus RTU).
+Mã chức năng: 04 (mã chức năng "Read Input Registers").
+Địa chỉ thanh ghi bắt đầu: 0BB8 (3000 ở dạng hex).
+Số lượng thanh ghi cần đọc: 0004 (4 ở dạng hex). Vậy frame truyền là : 05 04 0BB8 0004
+
+**04.2:**
+
+Địa chỉ Slave: 02 (địa chỉ của Slave).
+Mã chức năng: 04 (Đọc thanh ghi Input).
+Địa chỉ thanh ghi bắt đầu: Ví dụ, chúng ta muốn đọc từ thanh ghi Input có địa chỉ 0100 (256 ở dạng decimal hoặc 100 ở dạng hex).
+Số lượng thanh ghi cần đọc: Ví dụ, chúng ta muốn đọc 100 thanh ghi. Vậy frame truyền là : 02 04 0100 0064
 
 **Slave**
