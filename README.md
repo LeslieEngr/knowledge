@@ -1,4 +1,5 @@
-![image](https://github.com/LeslieEngr/protocol/assets/128287548/6f027e30-da71-4e89-ac17-9f073fa25324)# Khái niệm:
+# Khái niệm:
+
 **1. Cáp Cản Trở (Shielded Cable):**
 Cáp cản trở là cáp có một lớp bao ngoài bằng chất liệu dẫn điện (điển hình là lá bạc) để bảo vệ dây dẫn bên trong khỏi nhiễu từ môi trường xung quanh.
 Bao vỏ bằng kim loại bao quanh dây dẫn được kết nối đến đất (ground) để đảm bảo chất liệu bao ngoài này có thể tiếp xúc với đất và loại bỏ nhiễu.
