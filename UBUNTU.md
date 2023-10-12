@@ -1,4 +1,4 @@
-#Các lệnh cơ bản:
+# Các lệnh cơ bản :
 
 **1. Vị trí :**
   - **cd**: change directory: **cd ../..** ; **cd /** ;
