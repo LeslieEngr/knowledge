@@ -59,24 +59,87 @@ với lệnh này, ta có thể dùng phím tắt **"?"**: cat test_?.txt hoặc
   - Cập nhật gói ứng dụng sau thay đổi trong PPA: **sudo apt update**
 
 **4. Ngoài ra còn có Flatpak( tệp đuôi .flatpakref), Local app project, cài đặt tệp deb thủ công, wine, cài đặt từ nguồn(ví dụ github) :**
-  - **sudo dpkg -i tên-tệp.deb**
+  - **sudo dpkg -i tên-tệp.deb** : cài đặt
+  - **sudo dpkg -r tên-gói** : gỡ cài đặt gói
+  - **dpkg -l | grep tên-gói** : kiển thị trạng thái gói đã cài đặt
+  - **dpkg -I tên-tệp.deb** : kiểm tra thông tin về một gói đã cài đặt
+  - **dpkg -S /đường-dẫn-đến-tệp** : tìm ứng dụng liên quan đến một tệp cụ thể.
+  - dpkg: Debian Package
 
-# Tạo một ứng dụng hiển thị trên dash :
-    1. Tạo một file txt, sau đó sửa thành nội dung như sau:(bỏ bớt khoảng xuống dòng sau khi copy vào file)
 
-[Desktop Entry]
+# Quản lý quyền (permissions) : có 3 quyền chính: Read,(R) Write(W) and Execute(X):Quyền thực thi cho phép bạn chạy một tệp hoặc truy cập một thư mục
 
-Type=Application
+  - **chmod +r tên-tệp** : cấp quyền đọc cho tất cả mọi người
+  - chmod: change mod
+  - **chmod [tùy-chọn] quyền tên-tệp-thư-mục** 
+  - **chown tên-người-dùng tên-tệp** : thay đổi chủ sở hữu tệp
+  - **chgrp tên-nhóm tên-tệp** : thay đổi nhóm của một tệp, thư mục
+  - **chown tên-người-dùng:tên-nhóm tên-tệp** : kết hợp cả 2.
 
-Name=Tên ứng dụng
+# Hệ thống tệp và thư mục : 
 
-Exec=/đường-dẫn-đến-tệp.AppImage
+  - **/** là thư mục gốc của hệ thống, tất cả các thư mục và tệp đều bắt đầu từ đây.
+  - **/bin**: Chứa các tệp thực thi cơ bản (binary) như các lệnh hệ thống cần để khởi động hệ thống ngay cả khi chưa có tệp hệ thống được gắn kết.
+  - **/boot**: Chứa tệp cần thiết để khởi động hệ thống như hạt nhân (kernel) và tệp cấu hình khởi động.
+  - **/etc**: Chứa tệp cấu hình hệ thống và ứng dụng.
+  - **/home**: Là thư mục chứa các thư mục cá nhân của người dùng. Mỗi người dùng có một thư mục riêng trong đây.
+  - **/lib** và **/lib64**: Chứa các thư viện cơ bản cần cho các chương trình thực thi trong /bin và /sbin.
+  - **/mnt**: Thư mục dùng để gắn kết các thiết bị ngoại vi như đĩa CD, USB, và ổ đĩa cứng.
+  - **/opt**: Thư mục chứa các ứng dụng cài đặt tùy ý.
+  - **/root**: Thư mục chứa tệp cá nhân của người dùng gốc (superuser hoặc root) - người có quyền cao nhất trong hệ thống.
+  - **/usr**: Chứa các ứng dụng và tệp cơ bản dành cho người dùng, bao gồm cả mã nguồn và tài liệu.
+  - **/var**: Chứa các tệp dữ liệu biến đổi thường xuyên, chẳng hạn như tệp ghi log (log files) và dữ liệu cơ sở dữ liệu.
 
-Icon=/đường-dẫn-đến-biểu-tượng.png
+# Quản lý hệ thống, kiểm tra tài nguyên, hiệu suất, dung dương ổ đĩa trên Ubuntu : 
 
-    2. Sau đó, thay đổi thông số, sửa file thành đuôi .desktop
+  - **top** là một tiện ích dòng lệnh mạnh mẽ để theo dõi hoạt động hệ thống. Nó hiển thị danh sách các quy trình đang chạy theo thời gian thực, cùng với các thông tin về tài nguyên hệ thống như CPU, RAM, và tài nguyên swap đang sử dụng. Bạn sẽ thấy một bảng hiển thị danh sách các quy trình, thời gian hoạt động, tài nguyên CPU và RAM. Sử dụng các phím mũi tên lên/xuống để điều hướng trong danh sách và phím q để thoát.
+  - **htop** : cài đặt: **sudo apt-get install htop**  ; sau đó chạy **htop** : nó là nâng cấp của top, giao diện cũng thân thiện hơn
+  - **df -h** : lệnh disk free, kiểm tra dung lượng đã sử dụng, và còn lại.
+  - kill: dừng quá trình
+  - nice valua: thể hiện mức độ "tốt" của quá trình...
 
-    3. Chạy lệnh **nautilus ~/.local/share/applications** để hiển thư mục application, rồi cho file .desktop vào trong.
+# Quản lý mạng
+
+  - **ifconfig** (interface configuration) cho phép bạn xem và quản lý các thông tin mạng của các giao diện mạng trên hệ thống.
+  - **ip** : quản lý giao diện mạng, thay đổi cấu hình, vd: **ip a** : xem thông tin mạng của tất cả giao diện; **ip route** : xem bảng bộ định tuyến
+  - **ping địa-chỉ-ip-hoặc-tên-máy-chủ** : kiểm tra kết nối mạng và đo thời gian phản hồi từ một máy tính khác
+  - **netstat -tuln** : Xem danh sách các cổng mạng đang lắng nghe
+  - Lệnh **ifup** và **ifdown** : bật tắt giao diện mạng (cũng không cần thiết lắm)
+
+# Quản lý tác vụ - xử lý (Process)
+
+  - Mỗi một task đều có một dạng duy nhất gọi là PID(process id), cho biết vị trí của quy trình trong hệ thống.
+  - Lệnh **ps** là một công cụ dòng lệnh để xem danh sách các quy trình đang chạy trên hệ thống. Bạn có thể sử dụng **ps** với các tùy chọn để xem thông tin chi tiết về các quy trình. ví dụ: **ps aux**: a là tùy chọn để hiển thị tất cả các quy trình, u là tùy chọn để hiển thị thông tin chi tiết.
+  - **kill number_of_PID** : kết thúc một quy trình. **kill -9 12345** : thêm -9 để kết thúc quy trình một cách bắt buộc
+  - **pgrep myprocess** : trả về PID của quy trình tương ứng.
+  - Tóm lại, các lênh thường dùng là ps **aux ; kill , pgrep** 
+
+# File systems:
+
+  - Thư mục
+  - Tệp
+  - Hệ thống tệp ext4: là hệ thống mặc định của linux, hỗ trợ nhiều tính năng như journaling (ghi nhật ký) để bảo vệ dữ liệu khỏi mất mát do sự cố hệ thống.
+  - NTFS và FAT: New Technology File System và File Allocation Table, Ubuntu có hỗ trợ đọc ghi
+  - Gắn kết thiết bị (Mounting Devices):
+  - Ổ đĩa mạng (Network Drives): Ổ đĩa mạng là một phương tiện để kết nối và làm việc với dữ liệu lưu trên mạng thông qua giao thức mạng như SMB (Samba), NFS (Network File System), hoặc FTP (File Transfer Protocol).
+  - **Mount và umount:** : Dùng lệnh **fdisk** hoặc **lsblk** để scan các ổ đĩa ; **sudo mkdir /media/mydrive** : tạo một thư mục trống làm mount point(điểm gắn kết) ; cuối cùng, mount thông qua lệnh: **sudo mount /dev/sdb1 /media/mydrive**; **sudo umount /media/mydrive** để unmount, lưu ý unmount được viết thành umount.
+
+# Bảo mật: 
+
+  - Firewall : **sudo ufw enable**    # Kích hoạt tường lửa ; **sudo ufw allow 22/tcp**    # Cho phép lưu lượng truy cập SSH
+  - Sử dụng phần mềm chống vi-rút: **sudo apt install clamav** ; **sudo clamscan -r /**     # Quét toàn bộ hệ thống
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
