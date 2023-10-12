@@ -127,7 +127,7 @@ với lệnh này, ta có thể dùng phím tắt **"?"**: cat test_?.txt hoặc
 # Bảo mật: 
 
   - Firewall : **sudo ufw enable**    # Kích hoạt tường lửa ; **sudo ufw allow 22/tcp**    # Cho phép lưu lượng truy cập SSH
-  - Sử dụng phần mềm chống vi-rút: **sudo apt install clamav** ; **sudo clamscan -r /**     # Quét toàn bộ hệ thống
+  - Sử dụng phần mềm chống vi-rút: **sudo apt install clamav** ; **sudo freshclam** Cập nhật Cơ sở dữ liệu Chữ ký Virus ; **sudo clamscan -r /**     # Quét toàn bộ hệ thống
 
 
 
