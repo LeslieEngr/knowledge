@@ -61,6 +61,25 @@ với lệnh này, ta có thể dùng phím tắt **"?"**: cat test_?.txt hoặc
 **4. Ngoài ra còn có Flatpak( tệp đuôi .flatpakref), Local app project, cài đặt tệp deb thủ công, wine, cài đặt từ nguồn(ví dụ github) :**
   - **sudo dpkg -i tên-tệp.deb**
 
+# Tạo một ứng dụng hiển thị trên dash :
+    1. Tạo một file txt, sau đó sửa thành nội dung như sau:(bỏ bớt khoảng xuống dòng sau khi copy vào file)
+
+[Desktop Entry]
+
+Type=Application
+
+Name=Tên ứng dụng
+
+Exec=/đường-dẫn-đến-tệp.AppImage
+
+Icon=/đường-dẫn-đến-biểu-tượng.png
+
+    2. Sau đó, thay đổi thông số, sửa file thành đuôi .desktop
+
+    3. Chạy lệnh **nautilus ~/.local/share/applications** để hiển thư mục application, rồi cho file .desktop vào trong.
+
+
+
 
 
 
