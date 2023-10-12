@@ -129,6 +129,101 @@ với lệnh này, ta có thể dùng phím tắt **"?"**: cat test_?.txt hoặc
   - Firewall : **sudo ufw enable**    # Kích hoạt tường lửa ; **sudo ufw allow 22/tcp**    # Cho phép lưu lượng truy cập SSH
   - Sử dụng phần mềm chống vi-rút: **sudo apt install clamav** ; **sudo freshclam** Cập nhật Cơ sở dữ liệu Chữ ký Virus ; **sudo clamscan -r /**     # Quét toàn bộ hệ thống
 
+# Một Số lệnh cho ESP-IDF:
+
+**1. Biên Dịch Ứng Dụng:**
+
+  - **idf.py build**: Biên dịch mã nguồn của ứng dụng.
+
+**2. Nạp Chương Trình Lên ESP32:**
+
+  - **idf.py -p (port) flash**: Nạp chương trình đã biên dịch lên ESP32 thông qua cổng nối tiếp (ví dụ: /dev/ttyUSB0).
+
+**3. Chạy Chương Trình và Theo Dõi Output:**
+
+  - **idf.py -p (port) monitor**: Chạy chương trình trên ESP32 và theo dõi kết quả output trực tiếp.
+
+**4. Tạo Dự Án Mới:**
+
+  - **idf.py create-project** (project_name): Tạo một dự án mới với tên project_name.
+
+**5. Xóa Dự Án:**
+
+  - **idf.py fullclean**: Xóa toàn bộ dự án, bao gồm các tệp đã biên dịch.
+
+**6. Cài Đặt Thư Viện Bên Ngoài:**
+
+  - **idf.py menuconfig**: Cho phép bạn cài đặt và cấu hình thư viện và chức năng dự án.
+
+**7. Tạo Tệp .bin cho Firmware:**
+
+  - **idf.py -p (port) build**: Biên dịch và tạo tệp .bin chứa firmware để nạp lên ESP32.
+
+**8. Lập Trình UART (Giao Tiếp Serial):**
+
+  - **idf.py menuconfig** và sau đó vào "Serial flasher config" để cấu hình UART để nạp chương trình.
+
+**9. Kiểm Tra Log System:**
+
+  - **idf.py monitor** cho phép bạn theo dõi log hệ thống trong thời gian chạy.
+
+**10. Cài Đặt Gói Mở Rộng ESP-IDF:**
+
+  - Sử dụng **idf.py set-target** để cài đặt gói mở rộng như **esp-aws-iot, esp-mqtt**
+
+**Làm việc với tệp và thư mục:**
+
+  - ls: Liệt kê các tệp và thư mục trong thư mục hiện tại.
+  - cd: Di chuyển giữa các thư mục.
+  - mkdir: Tạo thư mục mới.
+  - touch: Tạo tệp mới hoặc cập nhật thời gian truy cập của một tệp.
+  - rm: Xóa tệp hoặc thư mục.
+    
+**Biên dịch và biên dich chương trình:**
+
+  - gcc: Trình biên dịch C/C++.
+  - g++: Trình biên dịch C++.
+  - make: Sử dụng để biên dịch và xây dựng dự án với Makefile.
+    
+**Kiểm tra tệp và thư mục:**
+
+  - file: Hiển thị thông tin về loại tệp.
+  - stat: Hiển thị thông tin về tệp hoặc thư mục.
+  - diff: So sánh hai tệp văn bản.
+  - hexdump: Hiển thị nội dung của tệp dưới dạng mã hex.
+    
+**Giao tiếp với thiết bị ngoại vi (ví dụ: microcontroller):**
+
+  - minicom: Ứng dụng giao diện dòng lệnh để truy cập và giao tiếp với thiết bị ngoại vi thông qua cổng serial.
+  - picocom: Tương tự như minicom, nhưng có giao diện dòng lệnh đơn giản hơn.
+
+**Chuyển đổi và soạn thảo mã nguồn:**
+
+  - nano hoặc vim: Trình soạn thảo văn bản dòng lệnh.
+  - gedit hoặc Visual Studio Code: Trình soạn thảo mã nguồn với giao diện đồ họa.
+
+**Quản lý gói và phần mềm:**
+
+  - apt-get hoặc apt: Quản lý gói và phần mềm trên Ubuntu với APT.
+  - snap: Quản lý ứng dụng Snap.
+  - dpkg: Quản lý gói DEB trực tiếp.
+
+**Kiểm tra và quản lý tài nguyên hệ thống:**
+
+  - htop: Hiển thị thông tin về việc sử dụng CPU và RAM.
+  - df: Hiển thị thông tin về dung lượng đĩa.
+  - free: Hiển thị thông tin về RAM còn trống.
+
+**Debug và kiểm tra:**
+
+  - gdb: Trình gỡ lỗi GNU Debugger.
+  - strace: Theo dõi cuộc gọi hệ thống.
+
+**Giao tiếp mạng:**
+
+  - ping: Kiểm tra kết nối mạng bằng cách gửi gói tin ping.
+  - ifconfig hoặc ip: Hiển thị và quản lý cài đặt mạng.
+
 
 
 
