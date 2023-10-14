@@ -2,6 +2,7 @@
 
 **1. Vị trí :**
   - **cd**: change directory: **cd ../..** ; **cd /** ;
+  - **sudo nautilus + vị_trí_thư_mục**: mở explorer giao diện người dùng 
   - **pwd**: print working directory:
   - (relative paths: đường dẫn tương đối): nơi bạn đến phụ thuộc vào thư mục làm việc hiện tại.
   - (absolute paths: đường dẫn tuyệt đối): cho dù đang ở thư mục nào, thì lệnh cũng tương tự. Và **/** là biểu thị của **root**, **~** biểu thị là **Home** 
