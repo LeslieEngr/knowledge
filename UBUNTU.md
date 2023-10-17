@@ -225,14 +225,19 @@ với lệnh này, ta có thể dùng phím tắt **"?"**: cat test_?.txt hoặc
   - ping: Kiểm tra kết nối mạng bằng cách gửi gói tin ping.
   - ifconfig hoặc ip: Hiển thị và quản lý cài đặt mạng.
 
+**Trinh sua van ban Vim :**
 
-
-
-
-
-
-
-
+  - vim tên_tệp: mo tep van ban
+  - >i : mode insert
+  - Luu va thoat: >ESC de dam bao o che do Normal, Nhap ':wq' va >Enter (write+quit)
+  - Thoat ma khong luu: >ESC de dam bao o che do Normal, Nhap ':q!' va >Enter (quit+!:bo qua)
+  - Di chuyển trong tệp: h (trái), j (xuống), k (lên), l (phải).
+  - Xóa và chỉnh sửa: >x: xoa; >dd: xoa dong hien tai; >i: insert; >u: hoan tac thay doi cuoi cung; 
+  >Ctr-r :Lam lai thay doi cuoi 
+  - Cp-pas: yy: sao chep dong; p: dan; ddp: di chuyen dong hien tai va dan len dong khac
+  - Tim va thay the: 
+  - tim /: /từ_cần_tìm ; di chuyen ket qua >n; replace: :%s/từ_cần_thay/từ_thay_thế/g
+  - Luu: :w ; Luu va thoat: :wq ; Thoat khong luu: :q!
 
 
 
