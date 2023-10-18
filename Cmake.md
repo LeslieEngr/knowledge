@@ -27,3 +27,13 @@
   - add_subdirectory(<ten_thu_muc>) : them thu muc
 
   - Noi chung, khi them Directories, ta dung 2 lenh tren. 
+
+#idf_component_register(SRCS "master.cpp" "ModbusMaster.cpp"
+                    #INCLUDE_DIRS ".")
+
+#set(PROJECT_NAME "modbus_simple_master")
+
+idf_component_register(SRCS "master.cpp" "ModbusMaster.cpp"
+                    INCLUDE_DIRS ".")
+
+target_compile_options(${COMPONENT_LIB} PRIVATE "-Wno-format")
