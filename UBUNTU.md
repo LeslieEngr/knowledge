@@ -239,7 +239,39 @@ với lệnh này, ta có thể dùng phím tắt **"?"**: cat test_?.txt hoặc
   - tim /: /từ_cần_tìm ; di chuyen ket qua >n; replace: :%s/từ_cần_thay/từ_thay_thế/g
   - Luu: :w ; Luu va thoat: :wq ; Thoat khong luu: :q!
 
+#WSL2: Ubuntu : 
 
+  - USB connect:  PowerShell in administrator : **usbipd wsl list **  and **usbipd wsl attach --busid <busid>**
+  - Open Ubuntu: **lsusb** to check connected devices.
+
+#Cấu trúc thư mục linux :
+  - / (Root): Đây là thư mục gốc của hệ thống tệp. Tất cả các thư mục và tệp đều nằm dưới thư mục này. Đối với người dùng thông thường, quyền truy cập vào thư mục này thường được giới hạn.
+  - /bin (Binary): Chứa các tệp lệnh thực thi (executables) cho người dùng. Các lệnh cơ bản như ls, cp, mv được lưu trữ ở đây.
+  - /etc (Etcetera): Chứa các tệp cấu hình cho hệ thống và ứng dụng. Các tệp như /etc/passwd chứa thông tin người dùng.
+  - /home: Là thư mục chính để lưu trữ các thư mục cá nhân của người dùng.
+  - /lib (Library): Chứa các thư viện hỗ trợ được sử dụng bởi các chương trình thực thi trong /bin và /sbin.
+  - /media: Chứa các điểm gắn kết tạm thời cho các thiết bị lưu trữ như USB, ổ đĩa CD/DVD.
+  - /mnt (Mount): Thường được sử dụng để gắn kết tạm thời các hệ thống tệp khác.
+  - /opt (Optional): Dành cho việc cài đặt các ứng dụng tùy chọn.
+  - /usr (User): Chứa các tệp lệnh, thư viện và tài nguyên hỗ trợ cho người dùng.
+  - /var (Variable): Chứa dữ liệu biến đổi, như các tệp nhật ký (log files) và tệp tạm thời.
+
+**etc 
+  - /etc/passwd: Lưu thông tin về người dùng, bao gồm tên người dùng, UID (User ID), GID (Group ID), thư mục chính và shell mặc định.
+  - /etc/group: Chứa thông tin về các nhóm người dùng, bao gồm tên nhóm, GID và danh sách các thành viên.
+  - /etc/hostname: Định nghĩa tên máy chủ (hostname) của hệ thống.
+  - /etc/network/: Chứa cấu hình mạng, bao gồm các tệp như /etc/network/interfaces trên một số hệ thống Debian hoặc /etc/sysconfig/network-scripts/ trên các hệ thống Red Hat.
+  - /etc/resolv.conf: Xác định máy chủ DNS mà hệ thống sử dụng để giải quyết tên miền.
+  - /etc/fstab: Chứa thông tin về các thiết bị và các tệp hệ thống được gắn kết (mount) tự động khi hệ thống khởi động.
+  - /etc/hosts: Bảng điều khiển tên miền và địa chỉ IP, thường được sử dụng để ánh xạ tên miền cục bộ.
+  - /etc/ssh/: Chứa cấu hình cho dịch vụ SSH (Secure Shell).
+  - /etc/apt/ hoặc /etc/yum/: Chứa các tệp cấu hình cho quản lý gói, bao gồm các nguồn cài đặt và tùy chọn khác.
+  - /etc/hostname: Chứa tên máy chủ của hệ thống.
+  - /etc/timezone: Định nghĩa múi giờ của hệ thống.
+  - /etc/sudoers: Cấu hình quyền sudo, quyết định người dùng nào được phép thực hiện các lệnh với quyền quản trị.
+  - /etc/profile: Cấu hình môi trường cho tất cả người dùng khi đăng nhập.
+  - /etc/crontab: Lịch trình các công việc tự động (cron jobs).
+  - /etc/sysctl.conf: Cấu hình kernel thông qua sysctl.
 
 
 
