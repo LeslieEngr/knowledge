@@ -11,3 +11,7 @@
 
 #Data type 
   - Một kiểu liệt kê (enum):giúp tập hợp một nhóm hằng số có chung một ý nghĩa, chẳng hạn gán giá trị cho các thứ trong một tuần, mang lại nhiều ý nghĩa cho người đọc chương trình. Các phần tử trong enum có thể tự động gán giá trị tăng dần, ta cũng có thể chủ động gán giá trị cho chúng, và nó sẽ tăng dần giá trị của chính phần tử cuối cùng được gán.
+  - Chuyển từ Bigendian sang Little endian chỉ đơn giản là đảo byte, vd :0x12345678 thì  Big : 12345678  >>> Little :  78563412  , chuyển đổi theo cặp vì mỗi 1 hex = 4 bit, 1 cặp hex là 8 bit ( tức 1 byte).
+
+Lý do phải chuyển : Các giao thức mạng hoặc học đọc, ghi dữ liệu, hoặc do cấu trúc máy tính khác nhau . Để tương thích cần chuyển đổi. 
+
