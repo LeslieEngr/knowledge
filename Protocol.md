@@ -1,4 +1,4 @@
-#UART/USART  - Universal Asynchronous Receiver/Transmitter
+# UART/USART  - Universal Asynchronous Receiver/Transmitter
   - USART là truyền thông đồng bộ, tức cùng baudrate, UART là truyền thông không đồng bộ.
   - Dùgn 2 chân Rx tx, gnd để truyền dữ liệu .
   - Có thể có 2 chân rts-request to send , cts-clean to send. Chúng dùng để kiểm soát luồng dữ liệu
