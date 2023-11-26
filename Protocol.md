@@ -1,4 +1,5 @@
-# UART/USART  - Universal Asynchronous Receiver/Transmitter
+# UART/USART:  - Universal Asynchronous Receiver/Transmitter
+
   - USART là truyền thông đồng bộ, tức cùng baudrate, UART là truyền thông không đồng bộ.
   - Dùgn 2 chân Rx tx, gnd để truyền dữ liệu .
   - Có thể có 2 chân rts-request to send , cts-clean to send. Chúng dùng để kiểm soát luồng dữ liệu
@@ -7,7 +8,7 @@
     + Parity bit: kiểm tra tính chẵn/lẻ của tổng số bit 1 trong data bits. 0 là tính chẵn, 1 là tính lẻ
     + stop bit : khi truyền xong, nó sẽ lên cao ít nhất là 2 bit để báo rằng lần truyền đã xong.
 
-# Khái niệm:
+# Modbus RTU:
 
 **1. Cáp Cản Trở (Shielded Cable):**
 Cáp cản trở là cáp có một lớp bao ngoài bằng chất liệu dẫn điện (điển hình là lá bạc) để bảo vệ dây dẫn bên trong khỏi nhiễu từ môi trường xung quanh.
@@ -29,7 +30,7 @@ RS485 thường sử dụng cáp đôi xoắn cản trở (twisted pair) với �
 Cáp RS485 thường được thiết kế để hỗ trợ truyền tải dữ liệu trên khoảng cách dài hơn và để chống lại nhiễu từ môi trường công nghiệp. Các sợi dẫn thường được xoắn chặt hơn để cải thiện khả năng chống nhiễu. RS485 được thiết kế cho giao tiếp đa điểm (multi-point) nghĩa là nhiều thiết bị có thể chia sẻ cùng một đường truyền. Điều này làm cho nó phù hợp cho các mạng nhiều thiết bị trong môi trường công nghiệp. RS485 được thiết kế cho giao tiếp đa điểm (multi-point) nghĩa là nhiều thiết bị có thể chia sẻ cùng một đường truyền.
 
 **Lưu ý :** Chân RS232 và RS485: Bình thường chỉ dùng 2 chân TX (Transmit) và RX (Receive), Các chân kiểm soát luồng dữ liệu như RTS (Request to Send) và CTS (Clear to Send) có thể được sử dụng (tùy thuộc vào yêu cầu của ứng dụng).
-# protocol
+#protocol
 **1. Hoạt động của M-S trong 1 chu kì truyền nhận dữ liệu:**
 
 **Master** : ví dụ:   **[| Địa_chỉ_slave(2byte) | function_code(2byte) | Địa_chỉ_bắt_đầu_đọc(4byte) | Số_lượng_thanh_ghi_cần_đọc(4byte) |]**
