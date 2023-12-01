@@ -71,6 +71,16 @@
   - Sử dụng:
         1. malloc: Thích hợp khi bạn không quan tâm đến giá trị ban đầu của bộ nhớ và muốn cấp phát một lượng lớn bộ nhớ nhanh chóng.
         2. calloc: Thích hợp khi bạn muốn đảm bảo rằng tất cả giá trị ban đầu trong bộ nhớ đều là 0, đặc biệt là trong trường hợp của mảng hoặc dữ liệu cần được khởi tạo một cách an toàn.
+# Memory Layout
+![image](https://github.com/LeslieEngr/knowledge/assets/128287548/92111a9f-6744-400f-a1cd-eaaea28b2c9c)
+  - OS Kernel Space (Không gian Kernel của Hệ điều hành): Là phần của bộ nhớ được dành cho hạt nhân (kernel) của hệ điều hành. Nó chứa mã và dữ liệu của hạt nhân, cũng như các cấu trúc dữ liệu và bảng trang quản lý bộ nhớ.
+  - Stack: Dùng để lưu trữ các biến cục bộ và giữa các giá trị trả về từ các hàm. Hoạt động theo nguyên tắc "Last In, First Out" (LIFO). Mỗi thread của một chương trình có một ngăn xếp riêng.
+  - Heap: Là nơi lưu trữ dữ liệu động được cấp phát trong quá trình chạy của chương trình. Cấp phát và giải phóng bộ nhớ trên heap tùy thuộc vào yêu cầu của chương trình.
+  - BSS (Block Started by Symbol): Uninitialized Data Segment:  Là một phần của Data Segment, chứa các biến toàn cục và tĩnh chưa được khai báo giá trị. Trong nhiều trường hợp, BSS chứa các biến với giá trị mặc định là 0, có thể đọc và ghi được.
+  - Data Segment: Chứa các biến toàn cục và tĩnh đã được khởi tạo. Dữ liệu trong segment này thường được sao chép từ file thực thi vào khi chương trình bắt đầu.
+    + Vùng nhớ hằng: Cho phép đọc và ghi lần đầu, sau đó chúng sẽ tồn tại trong suôt chương trình mà không thể thay đổi giá trị
+    + Lưu trữ biến toàn cục, static được khai báo giá trị, tồn tại trong cả quá trình chạy, có thể đọc, ghi được.
+  - Text Segment (Đoạn văn bản): Còn được gọi là Code Segment, chứa mã máy của chương trình. Thường là chỉ đọc và không thể thay đổi trong quá trình chạy.
 # Khác:
   - Một macro không thực sự là một hàm, nó đơn giản là phép thay thế văn bản. Trước khi biên dịch, nó sẽ thay thế tất cả sự xuất hiện của macro đó bằng mọi nội dung của nó. vd:
 
