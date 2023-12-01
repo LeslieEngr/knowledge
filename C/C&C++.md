@@ -31,35 +31,33 @@
   - Sau khi khởi tạo Struct, ta khai báo , nếu nó rỗng thì nên đặt **ten_struct={};** .  tất cả các trường của struct sẽ được khởi tạo với giá trị mặc định cho kiểu dữ liệu tương ứng (ví dụ: float sẽ được khởi tạo là 0.0). Điều này giúp đảm bảo rằng bạn có một trạng thái khởi đầu kiểm soát hơn khi sử dụng biến. Ngược lại, nếu không khởi tạo giá trị ban đầu,  các trường của nó sẽ chứa giá trị ngẫu nhiên từ bộ nhớ, và điều này có thể gây ra lỗi nếu bạn sử dụng các trường mà không biết giá trị của chúng.
   - Khái niệm về phương thức thuần ảo : vd : kieu_dulieu ten_ham(int a, ... ,float b) = 0; đây là một kiểu phương thức thuần ảo, nó được khởi tạo trong hàm cơ sở (hàm cha) , và được gán = 0, nghĩa là nó sẽ được triển khai trong hàm dẫn xuất (hàm con).
 
-# Cấp phát bộ nhớ động 
-  - Từ khóa **new** cung cấp bộ nhớ động tới vùng nhớ HEAP(Quản lý bởi lập trình viên và không có giới hạn) cho đối tượng hoặc mảng, nó sẽ tạo vùng nhớ trong HEAP và trả về con trỏ trỏ tới vùng nhớ đó. Điều này giúp chia sẻ dữ liệu giữa các hàm, quản lý kích thước linh hoạt, tránh rủi ro vượt quá ngăn xếp. Lưu ý rằng sau khi sử dụng xong, ta cần **delete** result để giải phóng bộ nhớ. vd: 
+# Cấp phát bộ nhớ động : lưu ý khi dùng xong phải giải phóng tài nguyên, và new, malloc, free, calloc không nên hòa trộn trong 1 chương trình để tránh conflic
+  - Cách phổ biến nhất:  Từ khóa **new** cung cấp bộ nhớ động tới vùng nhớ HEAP(Quản lý bởi lập trình viên và không có giới hạn) cho đối tượng hoặc mảng, nó sẽ tạo vùng nhớ trong HEAP và trả về con trỏ trỏ tới vùng nhớ đó. Điều này giúp chia sẻ dữ liệu giữa các hàm, quản lý kích thước linh hoạt, tránh rủi ro vượt quá ngăn xếp. Lưu ý rằng sau khi sử dụng xong, ta cần **delete** result để giải phóng bộ nhớ. Hàm trả về con trỏ : dùng để cấp phát động, quản lý đối tượng được cấp phát động, trả về mảng từ hàm, thao tác trực tiếp trên đối tượng và hiệu quả khi truyền dữ liệu, đặc biệt là khi dữ liệu có kích thước lớn.  vd:
 
-            #include <iostream>
-    
-            // Hàm trả về con trỏ kiểu int
-            int* createDynamicInt() {
-            // Tạo một con trỏ kiểu int động
-            int* dynamicInt = new int;
-    
-            // Gán giá trị cho biến mà con trỏ trỏ tới
-            *dynamicInt = 42;
-        
-            // Trả về con trỏ
-            return dynamicInt;
-            }
-        
-            int main() {
-                // Gọi hàm để nhận con trỏ kiểu int
-                int* result = createDynamicInt();
-            
-                // In giá trị mà con trỏ trỏ tới
-                std::cout << "Giá trị được trả về: " << *result << std::endl;
-            
-                // Nhớ giải phóng bộ nhớ sau khi sử dụng xong
-                delete result;
-            
-                return 0;
-                }
+                    // Toán tử new và delete 
+            int* dynamicInt = new int;  // Cấp phát một biến int động
+            delete dynamicInt;          // Giải phóng bộ nhớ
+                    // Toán tử new và delete cho mảng động 
+            int* dynamicArray = new int[5];  // Cấp phát mảng int động
+            delete[] dynamicArray;
+                    // Hàm trả về con trỏ :
+            double* createdynamicarray(int n){
+            double* dynamicdouble = new double[n];
+            return dynamicdouble;   // trả về con trỏ mảng kiểu double tới vùng nhớ HEAP
+              } 
+  - Hàm malloc và free : là một hàm trong thư viện cstdlid, trả về một con trỏ void 
+
+            int* dynamicInt = (int*)malloc(sizeof(int));  // Cấp phát một biến int động
+            free(dynamicInt);                            // Giải phóng bộ nhớ
+  - Hàm calloc và free : có thể khởi tạo giá trị mặc định cho byte vừa cấp phát
+
+            int* dynamicArray = (int*)calloc(5, sizeof(int));  // Cấp phát mảng int động với 5 phần tử
+            free(dynamicArray);                                // Giải phóng bộ nhớ
+  - Hàm relloc : để thay đổi kích thước bộ nhớ đã cấp phát trước đó 
+
+            int* dynamicArray = (int*)malloc(5 * sizeof(int));   // Cấp phát mảng int động với 5 phần tử
+            dynamicArray = (int*)realloc(dynamicArray, 10 * sizeof(int));  // Thay đổi kích thước mảng đến 10 phần tử
+            free(dynamicArray);                                   // Giải phóng bộ nhớ
 # Khác:
   - Một macro không thực sự là một hàm, nó đơn giản là phép thay thế văn bản. Trước khi biên dịch, nó sẽ thay thế tất cả sự xuất hiện của macro đó bằng mọi nội dung của nó. vd:
 
