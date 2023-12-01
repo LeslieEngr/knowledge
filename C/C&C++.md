@@ -45,11 +45,11 @@
             double* dynamicdouble = new double[n];
             return dynamicdouble;   // trả về con trỏ mảng kiểu double tới vùng nhớ HEAP
               } 
-  - Hàm malloc và free : là một hàm trong thư viện cstdlid, trả về một con trỏ void 
+  - Hàm malloc và free : là một hàm trong thư viện cstdlid, trả về một con trỏ void  : Memory Allocation (cấp phát bộ nhớ).
 
             int* dynamicInt = (int*)malloc(n*sizeof(int));  // Cấp phát một biến int động , n là kích cỡ, sizeof(int) là kích thước tính bằng byte.
             free(dynamicInt);                            // Giải phóng bộ nhớ
-  - Hàm calloc và free : có thể khởi tạo giá trị mặc định cho byte vừa cấp phát
+  - Hàm calloc và free : có thể khởi tạo giá trị mặc định cho byte vừa cấp phát      : Contiguous Allocation (cấp phát liên tục).
 
             int* dynamicArray = (int*)calloc(5, sizeof(int));  // Cấp phát mảng int động với 5 phần tử
             free(dynamicArray);                                // Giải phóng bộ nhớ
@@ -58,6 +58,19 @@
             int* dynamicArray = (int*)malloc(5 * sizeof(int));   // Cấp phát mảng int động với 5 phần tử
             dynamicArray = (int*)realloc(dynamicArray, 10 * sizeof(int));  // Thay đổi kích thước mảng đến 10 phần tử
             free(dynamicArray);                                   // Giải phóng bộ nhớ
+  - So sánh calloc và malloc :
+      + Tham số:
+        1. malloc: Nhận một tham số là kích thước của bộ nhớ cần cấp phát (tính bằng byte).
+        2. calloc: Nhận hai tham số là số lượng phần tử và kích thước của mỗi phần tử.
+      + Giá trị ban đầu của bộ nhớ:
+        1. malloc: Không đảm bảo rằng bộ nhớ được cấp phát có giá trị khởi tạo. Nó có thể chứa giá trị ngẫu nhiên từ bộ nhớ đã sử dụng trước đó.
+        2. calloc: Bộ nhớ được cấp phát bằng calloc có giá trị khởi tạo là 0 cho tất cả các byte.
+      + Hiệu suất:
+        1. malloc: Thực hiện nhanh hơn vì không cần phải thiết lập giá trị ban đầu của bộ nhớ.
+        2. calloc: Có thể chậm hơn vì cần phải thiết lập giá trị khởi tạo của tất cả byte trong bộ nhớ cấp phát.
+  - Sử dụng:
+        1. malloc: Thích hợp khi bạn không quan tâm đến giá trị ban đầu của bộ nhớ và muốn cấp phát một lượng lớn bộ nhớ nhanh chóng.
+        2. calloc: Thích hợp khi bạn muốn đảm bảo rằng tất cả giá trị ban đầu trong bộ nhớ đều là 0, đặc biệt là trong trường hợp của mảng hoặc dữ liệu cần được khởi tạo một cách an toàn.
 # Khác:
   - Một macro không thực sự là một hàm, nó đơn giản là phép thay thế văn bản. Trước khi biên dịch, nó sẽ thay thế tất cả sự xuất hiện của macro đó bằng mọi nội dung của nó. vd:
 
