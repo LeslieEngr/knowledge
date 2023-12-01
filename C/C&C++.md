@@ -47,7 +47,7 @@
               } 
   - Hàm malloc và free : là một hàm trong thư viện cstdlid, trả về một con trỏ void 
 
-            int* dynamicInt = (int*)malloc(sizeof(int));  // Cấp phát một biến int động
+            int* dynamicInt = (int*)malloc(n*sizeof(int));  // Cấp phát một biến int động , n là kích cỡ, sizeof(int) là kích thước tính bằng byte.
             free(dynamicInt);                            // Giải phóng bộ nhớ
   - Hàm calloc và free : có thể khởi tạo giá trị mặc định cho byte vừa cấp phát
 
